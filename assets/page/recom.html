@@ -11,7 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/recom.css">
 </head>
 <body>
   <header>
@@ -95,41 +96,50 @@
   </header>
 
   <main>
-    <section class="lieux-visites">
-      <h1 id="titre-main">Les lieux les plus visités</h1>
-      <div class="divider"></div>
-      
-      <div class="decouvrir">
-        <div class="cart">
-          <img src="/assets/img/petra.jpg" alt="Vue de nuit de Petra" title="Egypte">
-          <div class="cart-info">
-            <h5>Egypte</h5>
-            <p>description</p>
+    <div class="grid-container">
+      <div class="sidebar">
+          <h3 class="sidebar-title">Filtre</h3>
+          
+          <div class="sidebar-section">
+              <p class="sidebar-label">Budget (par nuit)</p>
+              <input type="range" class="range-slider" id="priceRange" min="0" max="200" value="100">
+              <div class="price-range">
+                  <span>0€</span>
+                  <span id="priceDisplay">100€</span>
+                  <span>200€</span>
+              </div>
           </div>
-        </div>
-        <div class="cart">
-          <img src="https://images.pexels.com/photos/27925732/pexels-photo-27925732/free-photo-of-mer-paysage-montagnes-nature.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plage de la Réunion" title="Réunion">
-          <div class="cart-info">
-            <h5>Réunion</h5>
-            <p>description</p>
+          
+          <div class="sidebar-section">
+              <p class="sidebar-label">Nombres d'étoiles</p>
+              <div class="checkbox-group">
+                  <label class="checkbox-label">
+                      <input type="checkbox" value="2"> 2 étoiles
+                  </label>
+                  <label class="checkbox-label">
+                      <input type="checkbox" value="3"> 3 étoiles
+                  </label>
+                  <label class="checkbox-label">
+                      <input type="checkbox" value="4"> 4 étoiles
+                  </label>
+                  <label class="checkbox-label">
+                      <input type="checkbox" value="5"> 5 étoiles
+                  </label>
+              </div>
           </div>
-        </div>
-        <div class="cart">
-          <img src="https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Santorini en Grèce" title="Grèce">
-          <div class="cart-info">
-            <h5>Grèce</h5>
-            <p>description</p>
-          </div>
-        </div>
-        <div class="cart">
-          <img src="https://images.pexels.com/photos/2004388/pexels-photo-2004388.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Montagnes enneigées en Finlande" title="Finlande">
-          <div class="cart-info">
-            <h5>Finlande</h5>
-            <p>description</p>
-          </div>
-        </div>
       </div>
-    </section>
+      
+      <div class="recommendations">
+          <div class="section-header">
+              <h2 class="section-title">Recommandations</h2>
+              <div class="progress-bar"></div>
+          </div>
+          
+          <div class="listings" id="listingsContainer">
+              <!-- Listings will be generated dynamically -->
+          </div>
+      </div>
+    </div>
   </main>
 
   <footer>
@@ -159,7 +169,6 @@
     </div>
   </footer>
 
-  <!-- JS -->
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/recom.js"></script>
 </body>
 </html>

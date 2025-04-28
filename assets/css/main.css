@@ -15,7 +15,7 @@ body {
 /* HEADER */
 header {
   height: 90vh;
-  background-image: url(/../TravelCompanion/assets/img/camionette-jaune.jpg);
+  background-image: url(/assets/img/camionette-jaune.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
