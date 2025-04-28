@@ -1,42 +1,40 @@
 <?php
+// login.php
+// Page de connexion pour les utilisateurs existants
+
 session_start();
-require_once '../includes/config.php';
-require_once '../includes/db.php';
+require_once 'auth.php';
 
-$error = '';
+// Si l'utilisateur est déjà connecté, le rediriger
+if (isLoggedIn()) {
+  header("Location: dashboard.php");
+  exit();
+}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$errors = [];
+
+// Traitement du formulaire de connexion
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST['email'] ?? '';
   $password = $_POST['password'] ?? '';
 
-  if (empty($email) || empty($password)) {
-    $error = "Veuillez remplir tous les champs";
-  } else {
-    // Vérifier l'utilisateur dans la base de données
-    $sql = "SELECT id, nom, prenom, email, password FROM utilisateurs WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+  // Validation basique
+  if (empty($email)) {
+    $errors[] = "L'email est requis.";
+  }
 
-    if ($result->num_rows === 1) {
-      $user = $result->fetch_assoc();
+  if (empty($password)) {
+    $errors[] = "Le mot de passe est requis.";
+  }
 
-      // Vérifier le mot de passe
-      if (password_verify($password, $user['password'])) {
-        // Créer la session
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_name'] = $user['prenom'] . ' ' . $user['nom'];
-        $_SESSION['user_email'] = $user['email'];
-
-        // Rediriger vers la page d'accueil
-        header('Location: ../index.php');
-        exit;
-      } else {
-        $error = "Email ou mot de passe incorrect";
-      }
+  // Si pas d'erreurs, essayer de connecter l'utilisateur
+  if (empty($errors)) {
+    if (loginUser($email, $password)) {
+      // Redirection vers le tableau de bord
+      header("Location: dashboard.php");
+      exit();
     } else {
-      $error = "Email ou mot de passe incorrect";
+      $errors[] = "Email ou mot de passe incorrect.";
     }
   }
 }
@@ -48,45 +46,122 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connexion - Travel.Companion</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@400;700&family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <title>Connexion - Travel Companion</title>
+  <!-- Insérez ici vos styles CSS -->
+  <style>
+    /* Styles de base pour le formulaire */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .login-container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #00BCD4;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #FF9800;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .btn {
+      background-color: #00BCD4;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background-color: #0097A7;
+    }
+
+    .errors {
+      background-color: #ffebee;
+      color: #c62828;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .register-link a {
+      color: #00BCD4;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-  <?php include_once '../includes/header.php'; ?>
+  <div class="login-container">
+    <h1>Connexion</h1>
 
-  <div class="auth-container">
-    <h2>Connexion</h2>
-
-    <?php if ($error): ?>
-      <div class="alert alert-error"><?php echo $error; ?></div>
+    <?php if (!empty($errors)): ?>
+      <div class="errors">
+        <ul>
+          <?php foreach ($errors as $error): ?>
+            <li><?php echo $error; ?></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
     <?php endif; ?>
 
-    <form action="" method="POST" class="auth-form">
+    <form action="login.php" method="post">
       <div class="form-group">
-        <label for="email">Adresse email</label>
-        <input type="email" id="email" name="email" required>
+        <label for="email">Adresse Email</label>
+        <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
       </div>
 
       <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password" required>
+        <label for="password">Mot de Passe</label>
+        <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
       </div>
 
-      <button type="submit">Se connecter</button>
+      <button type="submit" class="btn">Se connecter</button>
     </form>
 
-    <div class="auth-links">
-      <p>Pas encore de compte ? <a href="register.php">S'inscrire</a></p>
+    <div class="register-link">
+      Pas encore de compte? <a href="index.php">S'inscrire</a>
     </div>
   </div>
-
-  <?php include_once '../includes/footer.php'; ?>
-
-  <script src="../assets/js/main.js"></script>
 </body>
 
 </html>

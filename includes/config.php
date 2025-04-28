@@ -1,17 +1,24 @@
 <?php
-// Informations de connexion à la base de données
+// config/database.php
+// Fichier de configuration pour la connexion à la base de données
+
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root'); // À modifier selon votre configuration MySQL
-define('DB_PASS', ''); // À modifier selon votre configuration MySQL
 define('DB_NAME', 'travel_companion');
+define('DB_USER', 'root'); // À remplacer par votre nom d'utilisateur MySQL
+define('DB_PASSWORD', ''); // À remplacer par votre mot de passe
 
-// Configuration du site
-define('SITE_NAME', 'Travel.Companion');
-define('SITE_URL', 'http://localhost/travelcompanion'); // À modifier selon votre environnement
-
-// Fuseau horaire
-date_default_timezone_set('Europe/Paris');
-
-// Gestion des erreurs
-error_reporting(E_ALL);
-ini_set('display_errors', 1); // Mettre à 0 en production
+// Fonction pour établir une connexion à la base de données
+function getDbConnection()
+{
+  try {
+    $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+    // Configuration pour que PDO lance des exceptions en cas d'erreur
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Pour récupérer les résultats sous forme d'objets
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $conn;
+  } catch (PDOException $e) {
+    // En production, vous voudrez peut-être journaliser cette erreur plutôt que de l'afficher
+    die("Erreur de connexion à la base de données: " . $e->getMessage());
+  }
+}

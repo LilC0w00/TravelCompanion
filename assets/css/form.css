@@ -1,0 +1,188 @@
+header {
+  height: 50vh;
+  background-image: url(/assets/img/camionette-jaune.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  box-shadow: inset 0 0 0 2000px rgba(30, 50, 74, 0.3);
+  border: 3px white solid;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.form-group {
+  width: 48%;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #FF9800;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 14px;
+}
+
+textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.number-input {
+  position: relative;
+}
+
+.number-controls {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.number-control {
+  background-color: #e0e0e0;
+  border: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: #333;
+  margin: 1px 0;
+}
+
+.number-control:hover {
+  background-color: #ccc;
+}
+
+.btn {
+  background-color: #00BCD4;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0097A7;
+}
+
+.connect-btn {
+  background-color: #FF9800;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.connect-btn:hover {
+  background-color: #F57C00;
+}
+
+.phone-input {
+  display: flex;
+}
+
+.country-code {
+  width: 70px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 0 5px;
+  background-color: #f9f9f9;
+}
+
+.country-code img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.password-input {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-password img {
+  width: 20px;
+  opacity: 0.6;
+}
+
+.toggle-password:hover img {
+  opacity: 1;
+}
+
+.date-input {
+  position: relative;
+}
+
+.date-input input {
+  padding-right: 30px;
+}
+
+.date-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 15px 0;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+      width: 100%;
+  }
+}
