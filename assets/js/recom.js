@@ -164,3 +164,27 @@ function displayListings(listingsArray) {
     listingsContainer.appendChild(listingElement);
   });
 }
+
+function getParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    personnes: params.get("personnes"),
+    destination: params.get("destination"),
+    logement: params.get("logement"),
+    transport: params.get("transport"),
+    date: params.get("date"),
+    filtre: params.get("filtre"),
+  };
+}
+
+// Utiliser les paramètres
+const infosVoyage = getParams();
+console.log(infosVoyage);
+
+// Tu peux ici par exemple remplir des éléments HTML en fonction :
+document.getElementById("destination").value = infosVoyage.destination;
+document.getElementById("logement").value = infosVoyage.logement;
+document.getElementById("transport").value = infosVoyage.transport;
+document.getElementById("date").value = infosVoyage.date;
+document.getElementById("nombre-prsn").value = infosVoyage.personnes;
+// Pour le filtre actif, il faudra chercher le bouton avec le texte correspondant.

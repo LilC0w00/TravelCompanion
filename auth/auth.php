@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
       <?php endif; ?>
 
-      <form method="POST" action="register.php">
+      <form method="POST" action="auth.php">
         <div class="form-row">
           <div class="form-group">
             <label for="nom">Nom</label>
@@ -138,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="telephone">Votre numéro de téléphone</label>
             <div class="phone-input">
               <div class="country-code">
-                <img src="/api/placeholder/16/12" alt="Drapeau">
+                <img src="https://www.svgrepo.com/show/508678/flag-wf.svg" alt="Drapeau">
                 <span>+33</span>
               </div>
               <input type="tel" id="telephone" name="telephone" placeholder="Numéro de téléphone" pattern="[0-9]{9,15}" value="<?php echo htmlspecialchars($telephone ?? ''); ?>">

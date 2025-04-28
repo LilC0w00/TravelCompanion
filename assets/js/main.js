@@ -23,4 +23,38 @@ document.addEventListener("DOMContentLoaded", function () {
       }`;
     });
   });
+
+  // ---------------------------------
+  // AJOUT pour "Créer un compte et approuver"
+  // ---------------------------------
+
+  let isLoggedIn = false; // METS true ici si connecté, false sinon
+
+  document
+    .getElementById("crea-compte-approuver")
+    .addEventListener("click", function (event) {
+      event.preventDefault(); // Empêche l'envoi du formulaire normalement
+
+      if (isLoggedIn) {
+        // Récupérer les valeurs du formulaire
+        const nombrePersonnes = document.getElementById("nombre-prsn").value;
+        const destination = document.getElementById("destination").value;
+        const logement = document.getElementById("logement").value;
+        const transport = document.getElementById("transport").value;
+        const date = document.getElementById("date").value;
+
+        // Récupérer le filtre actif
+        const filtreBtn = document.querySelector(".filtre-btn.active");
+        const filtre = filtreBtn ? filtreBtn.textContent : "";
+
+        // Construire l'URL avec les paramètres
+        const url = `recom.html?personnes=${nombrePersonnes}&destination=${destination}&logement=${logement}&transport=${transport}&date=${date}&filtre=${filtre}`;
+
+        // Rediriger vers recom.html avec les paramètres
+        window.location.href = url;
+      } else {
+        alert("Veuillez vous connecter pour continuer !");
+        window.location.href = "auth/login.php"; // Redirige vers la page de login
+      }
+    });
 });

@@ -1,0 +1,9 @@
+#login-page {
+  background-image: url('../../assets/img/camionette-jaune.jpg') !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  position: relative !important;
+  box-shadow: inset 0 0 0 2000px rgba(30, 50, 74, 0.3) !important;
+  border: 3px white solid !important;
+}
