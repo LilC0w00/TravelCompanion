@@ -1,93 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel.Companion</title>
 
   <!-- FONT GOOGLE -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+
   <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <header>
     <nav>
       <h3>Travel.Companion</h3>
       <ul>
-        <li>accueil</li>
-        <li>découvertes</li>
-        <li>créer un voyage</li>
+        <li><a href="">accueil</a></li>
+        <li><a href="">découvertes</a></li>
+        <li><a href="">créer un voyage</a></li>
       </ul>
       <div id="seco-accueil">
-        <a href="" id="monprofil"><img src="" alt=""></a>
-        <p id="seconnecter">Se connecter</p>
+        <a href="" id="monprofil">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+            <path d="M222-255q63-44 125-67.5T480-346q71 0 133.5 23.5T739-255q44-54 62.5-109T820-480q0-145-97.5-242.5T480-820q-145 0-242.5 97.5T140-480q0 61 19 116t63 109Zm257.81-195q-57.81 0-97.31-39.69-39.5-39.68-39.5-97.5 0-57.81 39.69-97.31 39.68-39.5 97.5-39.5 57.81 0 97.31 39.69 39.5 39.68 39.5 97.5 0 57.81-39.69 97.31-39.68 39.5-97.5 39.5Zm.66 370Q398-80 325-111.5t-127.5-86q-54.5-54.5-86-127.27Q80-397.53 80-480.27 80-563 111.5-635.5q31.5-72.5 86-127t127.27-86q72.76-31.5 155.5-31.5 82.73 0 155.23 31.5 72.5 31.5 127 86t86 127.03q31.5 72.53 31.5 155T848.5-325q-31.5 73-86 127.5t-127.03 86Q562.94-80 480.47-80Zm-.47-60q55 0 107.5-16T691-212q-51-36-104-55t-107-19q-54 0-107 19t-104 55q51 40 103.5 56T480-140Zm0-370q34 0 55.5-21.5T557-587q0-34-21.5-55.5T480-664q-34 0-55.5 21.5T403-587q0 34 21.5 55.5T480-510Zm0-77Zm0 374Z" id="profil-photo"/>
+          </svg>
+        </a>
+        <p id="seconnecter">S'identifier</p>
       </div>
     </nav>
-    <h2>Accordez vous du <br>temps et gérez votre <br>voyage comme bon <br>vous semble</h2>
-    <h2>Une expérience des plus <br> Enrichissante et Intense</h2>
+
+    <div class="hero-content">
+      <h2 id="text-un">Accordez vous du<br>temps et gérez votre<br>voyage comme bon<br>vous semble</h2>
+      <h2 id="text-deux">Une expérience des plus<br>Enrichissante et Intense</h2>
+    </div>
+
     <section class="input-accueil">
       <form action="">
-        <div>
-          <h4>Trouvez les meilleurs endroits</h4>
-          <p>indiquez le nombres de personnes <input type="number" id="nombre-prsn"></p>
+        <div class="titre-prsn">
+          <h4>Trouve les meilleurs endroits</h4>
+          <p>Indiquez le nombres de personnes : <input type="number" id="nombre-prsn" value="2"></p>
         </div>
+
         <div class="select">
-          <label for="destination">Aller à</label><br>
-          <select name="destination-select" id="destination">
-            <option value="">Choisissez votre destination</option>
-            <option value="Egypte">Egypte</option>
-            <option value="Reunion">Réunion</option>
-            <option value="Grece">Grèce</option>
-            <option value="Finlande">Finlande</option>
-          </select>
-          <label for="logement">Logement</label><br>
-          <select name="logement-select" id="logement">
-            <option value="">Votre futur logement</option>
-            <option value="Airbnb">Airbnb</option>
-            <option value="Hotel">Hôtel</option>
-          </select>
-          <label for="transport">Transport</label><br>
-          <select name="transport-select" id="transport">
-            <option value="">Votre moyen de transport</option>
-            <option value="VoiturePerso">Voiture personnelle</option>
-            <option value="Taxi">Taxi</option>
-            <option value="VoitureLocation">Louer une voiture</option>
-          </select>
-          <label for="date">Départ</label><br>
-          <input type="date" id="date" name="date">
+          <div class="input-group">
+            <label for="destination">Aller à :</label>
+            <select id="destination" name="destination-select">
+              <option value="">Choisissez votre destination</option>
+              <option value="Egypte">Egypte</option>
+              <option value="Reunion">Réunion</option>
+              <option value="Grece">Grèce</option>
+              <option value="Finlande">Finlande</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="logement">Logement</label>
+            <select id="logement" name="logement-select">
+              <option value="">Votre moyen de logement</option>
+              <option value="Airbnb">Airbnb</option>
+              <option value="Hotel">Hôtel</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="transport">Transport</label>
+            <select id="transport" name="transport-select">
+              <option value="">Votre moyen de transport</option>
+              <option value="Avion">Avion</option>
+              <option value="Train">Train</option>
+              <option value="Voiture">Voiture</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="date">Départ</label>
+            <input type="date" id="date" name="date">
+          </div>
         </div>
-        <div class="filtre">
-          <label for="filtre">Filtre :</label>
-          <select name="filtre" id="filtres">
-            <option value="Plage">Plage</option>
-            <option value="Montagne">Montagne</option>
-            <option value="PasCher">Pas cher</option>
-          </select>
+
+        <div class="filtre-container">
+          <p>Filtre :</p>
+          <div class="filtre-buttons">
+            <button type="button" class="filtre-btn active">Plage</button>
+            <button type="button" class="filtre-btn">Montagne</button>
+            <button type="button" class="filtre-btn">Pas cher</button>
+          </div>
+          <button type="submit" id="crea-compte-approuver">Créer un compte et approuver</button>
         </div>
-        <button id="crea-compte-approuver">Créér un compte et approuver</button>
       </form>
     </section>
   </header>
 
   <main>
-    <h1 id="titre-main">Les lieux les plus visités</h1>
-    <section class="decouvrir">
-      <div class="cart">
-        <img src="" alt="" title="Egypte">
-        <h5>Egypte</h5>
-        <p>description</p>
-      </div>
-      <div class="cart">
-        <img src="" alt="" title="Réunion">
-        <h5>Réunion</h5>
-        <p>description</p>
-      </div><div class="cart">
-        <img src="" alt="" title="Grèce">
-        <h5>Grèce</h5>
-        <p>description</p>
-      </div><div class="cart">
-        <img src="" alt="" title="Finlande">
-        <h5>Finlande</h5>
-        <p>description</p>
+    <section class="lieux-visites">
+      <h1 id="titre-main">Les lieux les plus visités</h1>
+      <div class="divider"></div>
+      
+      <div class="decouvrir">
+        <div class="cart">
+          <img src="/frontend/img/petra.jpg" alt="Vue de nuit de Petra" title="Egypte">
+          <div class="cart-info">
+            <h5>Egypte</h5>
+            <p>description</p>
+          </div>
+        </div>
+        <div class="cart">
+          <img src="https://images.pexels.com/photos/27925732/pexels-photo-27925732/free-photo-of-mer-paysage-montagnes-nature.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plage de la Réunion" title="Réunion">
+          <div class="cart-info">
+            <h5>Réunion</h5>
+            <p>description</p>
+          </div>
+        </div>
+        <div class="cart">
+          <img src="https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Santorini en Grèce" title="Grèce">
+          <div class="cart-info">
+            <h5>Grèce</h5>
+            <p>description</p>
+          </div>
+        </div>
+        <div class="cart">
+          <img src="https://images.pexels.com/photos/2004388/pexels-photo-2004388.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Montagnes enneigées en Finlande" title="Finlande">
+          <div class="cart-info">
+            <h5>Finlande</h5>
+            <p>description</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -119,7 +159,7 @@
     </div>
   </footer>
 
-
   <!-- JS -->
+  <script src="js/main.js"></script>
 </body>
 </html>
