@@ -4,8 +4,122 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel.Companion</title>
+
+  <!-- FONT GOOGLE -->
+  <!-- CSS -->
 </head>
 <body>
-  
+  <header>
+    <nav>
+      <h3>Travel.Companion</h3>
+      <ul>
+        <li>accueil</li>
+        <li>découvertes</li>
+        <li>créer un voyage</li>
+      </ul>
+      <div id="seco-accueil">
+        <a href="" id="monprofil"><img src="" alt=""></a>
+        <p id="seconnecter">Se connecter</p>
+      </div>
+    </nav>
+    <h2>Accordez vous du <br>temps et gérez votre <br>voyage comme bon <br>vous semble</h2>
+    <h2>Une expérience des plus <br> Enrichissante et Intense</h2>
+    <section class="input-accueil">
+      <form action="">
+        <div>
+          <h4>Trouvez les meilleurs endroits</h4>
+          <p>indiquez le nombres de personnes <input type="number" id="nombre-prsn"></p>
+        </div>
+        <div class="select">
+          <label for="destination">Aller à</label><br>
+          <select name="destination-select" id="destination">
+            <option value="">Choisissez votre destination</option>
+            <option value="Egypte">Egypte</option>
+            <option value="Reunion">Réunion</option>
+            <option value="Grece">Grèce</option>
+            <option value="Finlande">Finlande</option>
+          </select>
+          <label for="logement">Logement</label><br>
+          <select name="logement-select" id="logement">
+            <option value="">Votre futur logement</option>
+            <option value="Airbnb">Airbnb</option>
+            <option value="Hotel">Hôtel</option>
+          </select>
+          <label for="transport">Transport</label><br>
+          <select name="transport-select" id="transport">
+            <option value="">Votre moyen de transport</option>
+            <option value="VoiturePerso">Voiture personnelle</option>
+            <option value="Taxi">Taxi</option>
+            <option value="VoitureLocation">Louer une voiture</option>
+          </select>
+          <label for="date">Départ</label><br>
+          <input type="date" id="date" name="date">
+        </div>
+        <div class="filtre">
+          <label for="filtre">Filtre :</label>
+          <select name="filtre" id="filtres">
+            <option value="Plage">Plage</option>
+            <option value="Montagne">Montagne</option>
+            <option value="PasCher">Pas cher</option>
+          </select>
+        </div>
+        <button id="crea-compte-approuver">Créér un compte et approuver</button>
+      </form>
+    </section>
+  </header>
+
+  <main>
+    <h1 id="titre-main">Les lieux les plus visités</h1>
+    <section class="decouvrir">
+      <div class="cart">
+        <img src="" alt="" title="Egypte">
+        <h5>Egypte</h5>
+        <p>description</p>
+      </div>
+      <div class="cart">
+        <img src="" alt="" title="Réunion">
+        <h5>Réunion</h5>
+        <p>description</p>
+      </div><div class="cart">
+        <img src="" alt="" title="Grèce">
+        <h5>Grèce</h5>
+        <p>description</p>
+      </div><div class="cart">
+        <img src="" alt="" title="Finlande">
+        <h5>Finlande</h5>
+        <p>description</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-text">
+      <h4>Explore</h4>
+      <p>Destination</p>
+      <p>Destination</p>
+      <p>Destination</p>
+    </div>
+    <div class="footer-text">
+      <h4>About us</h4>
+      <p>Destination</p>
+      <p>Destination</p>
+      <p>Destination</p>
+    </div>
+    <div class="footer-text">
+      <h4>Support</h4>
+      <p>Destination</p>
+      <p>Destination</p>
+      <p>Destination</p>
+    </div>
+    <div class="footer-text">
+      <h4>Avis</h4>
+      <p>Destination</p>
+      <p>Destination</p>
+      <p>Destination</p>
+    </div>
+  </footer>
+
+
+  <!-- JS -->
 </body>
 </html>
