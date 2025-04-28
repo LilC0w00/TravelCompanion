@@ -271,14 +271,14 @@ main {
 .decouvrir {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 50px;
 }
 
 .cart {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  height: 250px;
+  height: 600px;
   transition: transform 0.3s ease;
   cursor: pointer;
 }
